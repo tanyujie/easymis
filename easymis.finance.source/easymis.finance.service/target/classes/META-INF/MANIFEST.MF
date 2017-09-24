@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: lenovo-t
+Build-Jdk: 1.8.0_91
+Specification-Title: easymis.finance.service
+Specification-Version: 0.0.1-SNAPSHOT
+Implementation-Title: easymis.finance.service
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: easymis
+Created-By: Maven Integration for Eclipse
+

@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>easymis</groupId>
+    <artifactId>easymis.scm.source</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <groupId>easymis</groupId>
+  <artifactId>easymis.scm.web</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <name>easymis.oa.web Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+<profiles>
+		<profile>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<id>development</id>			
+			<properties>
+				<site.domain>easymis.cn</site.domain>
+				<mongo.host>172.16.2.53</mongo.host>
+				<mongo.port>27017</mongo.port>				
+				
+				<site.logger.url>http://log.easymis.cn</site.logger.url>
+				<site.error.url>http://error.easymis.cn/error</site.error.url>
+				<site.images.url>http://images.easymis.cn</site.images.url>
+				<site.im.url>http://im.easymis.cn</site.im.url>
+				<site.im.https.url>http://im.easymis.cn</site.im.https.url>
+				<site.api.url>http://api.easymis.cn/api</site.api.url>
+				<site.app.url>http://app.easymis.cn/app</site.app.url>
+				<site.bid.url>http://bid.easymis.cn/bid</site.bid.url>
+				<site.callcenter.url>http://callcenter.easymis.cn/callcenter</site.callcenter.url>
+				<site.crm.url>http://crm.easymis.cn/crm</site.crm.url>
+				<site.finance.url>http://finance.easymis.cn/finance</site.finance.url>
+				<site.hrm.url>http://hrm.easymis.cn/hrm</site.hrm.url>
+				<site.know.url>http://know.easymis.cn/know</site.know.url>
+				<site.oa.url>http://oa.easymis.cn/oa</site.oa.url>
+				<site.operation.url>http://operation.easymis.cn/operation</site.operation.url>
+				<site.portal.url>http://portal.easymis.cn/portal</site.portal.url>
+				<site.project.url>http://project.easymis.cn/project</site.project.url>
+				<site.scm.url>http://scm.easymis.cn/scm</site.scm.url>
+				<site.uc.url>http://uc.easymis.cn/uc</site.uc.url>
+			</properties>
+			
+			</profile>
+	</profiles>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <finalName>oa</finalName>
+  </build>
+</project>

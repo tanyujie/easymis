@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+ <!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">   
+ <mapper namespace="cn.easymis.entitys.mybatis.mapper.CrmLeadsMapper">   
+ <resultMap id="CrmLeadsResultMap" type="cn.easymis.entitys.mybatis.dto.CrmLeadsDto">  
+<result column="leads_id" property="leadsId" jdbcType="VARCHAR"/> 
+<result column="org_id" property="orgId" jdbcType="VARCHAR"/> 
+<result column="company_id" property="companyId" jdbcType="VARCHAR"/> 
+<result column="owner_id" property="ownerId" jdbcType="VARCHAR"/> 
+<result column="creator_id" property="creatorId" jdbcType="VARCHAR"/> 
+<result column="leads_name" property="leadsName" jdbcType="VARCHAR"/> 
+<result column="position" property="position" jdbcType="VARCHAR"/> 
+<result column="contacts" property="contacts" jdbcType="VARCHAR"/> 
+<result column="sex" property="sex" jdbcType="INTEGER"/> 
+<result column="mobile" property="mobile" jdbcType="VARCHAR"/> 
+<result column="dept_name" property="deptName" jdbcType="VARCHAR"/> 
+<result column="email" property="email" jdbcType="VARCHAR"/> 
+<result column="create_time" property="createTime" jdbcType="DATE"/> 
+<result column="update_time" property="updateTime" jdbcType="DATE"/> 
+<result column="deleted" property="deleted" jdbcType="INTEGER"/> 
+<result column="delete_id" property="deleteId" jdbcType="VARCHAR"/> 
+<result column="delete_time" property="deleteTime" jdbcType="DATE"/> 
+<result column="transformed" property="transformed" jdbcType="INTEGER"/> 
+<result column="transform_id" property="transformId" jdbcType="VARCHAR"/> 
+<result column="contacts_id" property="contactsId" jdbcType="VARCHAR"/> 
+<result column="customer_id" property="customerId" jdbcType="VARCHAR"/> 
+<result column="busi_id" property="busiId" jdbcType="VARCHAR"/> 
+<result column="nextstep" property="nextstep" jdbcType="VARCHAR"/> 
+<result column="next_Time" property="nextTime" jdbcType="DATE"/> 
+<result column="have_Time" property="haveTime" jdbcType="DATE"/> 
+<result column="address" property="address" jdbcType="VARCHAR"/> 
+<result column="source" property="source" jdbcType="VARCHAR"/> 
+<result column="code" property="code" jdbcType="VARCHAR"/> 
+<result column="qq" property="qq" jdbcType="VARCHAR"/> 
+<result column="phone" property="phone" jdbcType="VARCHAR"/> 
+<result column="country" property="country" jdbcType="VARCHAR"/> 
+<result column="province" property="province" jdbcType="VARCHAR"/> 
+<result column="city" property="city" jdbcType="VARCHAR"/> 
+<result column="level1_Industry_id" property="level1IndustryId" jdbcType="VARCHAR"/> 
+<result column="level2_Industry_id" property="level2IndustryId" jdbcType="VARCHAR"/> 
+<result column="level3_Industry_id" property="level3IndustryId" jdbcType="VARCHAR"/> 
+<result column="level4_Industry_id" property="level4IndustryId" jdbcType="VARCHAR"/> 
+<result column="depict" property="depict" jdbcType="VARCHAR"/> 
+<result column="blog" property="blog" jdbcType="VARCHAR"/> 
+<result column="follow" property="follow" jdbcType="INTEGER"/> 
+<result column="zip_code" property="zipCode" jdbcType="VARCHAR"/> 
+<result column="longitude" property="longitude" jdbcType="VARCHAR"/> 
+<result column="latitude" property="latitude" jdbcType="VARCHAR"/> 
+<result column="picture" property="picture" jdbcType="VARCHAR"/> 
+</resultMap>  
+<select id="getList" parameterType="map" resultMap="CrmLeadsResultMap">   
+  SELECT t.* FROM crm_leads t   
+ </select>  
+ <insert id="save" parameterType="cn.easymis.entitys.mybatis.dto.CrmLeadsDto">  
+ INSERT INTO crm_leads(leads_id,org_id,company_id,owner_id,creator_id,leads_name,position,contacts,sex,mobile,dept_name,email,create_time,update_time,deleted,delete_id,delete_time,transformed,transform_id,contacts_id,customer_id,busi_id,nextstep,next_Time,have_Time,address,source,code,qq,phone,country,province,city,level1_Industry_id,level2_Industry_id,level3_Industry_id,level4_Industry_id,depict,blog,follow,zip_code,longitude,latitude,picture)values(#{leadsId},#{orgId},#{companyId},#{ownerId},#{creatorId},#{leadsName},#{position},#{contacts},#{sex},#{mobile},#{deptName},#{email},#{createTime},#{updateTime},#{deleted},#{deleteId},#{deleteTime},#{transformed},#{transformId},#{contactsId},#{customerId},#{busiId},#{nextstep},#{nextTime},#{haveTime},#{address},#{source},#{code},#{qq},#{phone},#{country},#{province},#{city},#{level1IndustryId},#{level2IndustryId},#{level3IndustryId},#{level4IndustryId},#{depict},#{blog},#{follow},#{zipCode},#{longitude},#{latitude},#{picture}) 
+ </insert>  
+ <update id="update" parameterType="cn.easymis.entitys.mybatis.dto.CrmLeadsDto">  
+  UPDATE crm_leads SET leads_id= #{leadsId},org_id= #{orgId},company_id= #{companyId},owner_id= #{ownerId},creator_id= #{creatorId},leads_name= #{leadsName},position= #{position},contacts= #{contacts},sex= #{sex},mobile= #{mobile},dept_name= #{deptName},email= #{email},create_time= #{createTime},update_time= #{updateTime},deleted= #{deleted},delete_id= #{deleteId},delete_time= #{deleteTime},transformed= #{transformed},transform_id= #{transformId},contacts_id= #{contactsId},customer_id= #{customerId},busi_id= #{busiId},nextstep= #{nextstep},next_Time= #{nextTime},have_Time= #{haveTime},address= #{address},source= #{source},code= #{code},qq= #{qq},phone= #{phone},country= #{country},province= #{province},city= #{city},level1_Industry_id= #{level1IndustryId},level2_Industry_id= #{level2IndustryId},level3_Industry_id= #{level3IndustryId},level4_Industry_id= #{level4IndustryId},depict= #{depict},blog= #{blog},follow= #{follow},zip_code= #{zipCode},longitude= #{longitude},latitude= #{latitude},picture= #{picture} WHERE leads_id= #{leadsId} 
+ </update> 
+ <delete id="delete" parameterType="java.lang.String"> 
+  DELETE FROM crm_leads WHERE leads_id = #{leadsId} 
+ </delete>  
+ <select id="findById" parameterType="java.lang.String" resultMap="CrmLeadsResultMap">  
+  SELECT t.* FROM crm_leads t WHERE t.leads_id = #{leadsId} 
+ </select>  
+ </mapper>  
+ 

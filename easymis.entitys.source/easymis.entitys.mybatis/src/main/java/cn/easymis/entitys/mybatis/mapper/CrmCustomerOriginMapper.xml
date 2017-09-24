@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+ <!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">   
+ <mapper namespace="cn.easymis.entitys.mybatis.mapper.CrmCustomerOriginMapper">   
+ <resultMap id="CrmCustomerOriginResultMap" type="cn.easymis.entitys.mybatis.dto.CrmCustomerOriginDto">  
+<result column="origin_id" property="originId" jdbcType="VARCHAR"/> 
+<result column="origin_name" property="originName" jdbcType="VARCHAR"/> 
+<result column="depict" property="depict" jdbcType="VARCHAR"/> 
+<result column="org_id" property="orgId" jdbcType="VARCHAR"/> 
+</resultMap>  
+<select id="getList" parameterType="map" resultMap="CrmCustomerOriginResultMap">   
+  SELECT t.* FROM crm_customer_origin t   
+ </select>  
+ <insert id="save" parameterType="cn.easymis.entitys.mybatis.dto.CrmCustomerOriginDto">  
+ INSERT INTO crm_customer_origin(origin_id,origin_name,depict,org_id)values(#{originId},#{originName},#{depict},#{orgId}) 
+ </insert>  
+ <update id="update" parameterType="cn.easymis.entitys.mybatis.dto.CrmCustomerOriginDto">  
+  UPDATE crm_customer_origin SET origin_id= #{originId},origin_name= #{originName},depict= #{depict},org_id= #{orgId} WHERE org_id= #{orgId} 
+ </update> 
+ <delete id="delete" parameterType="java.lang.String"> 
+  DELETE FROM crm_customer_origin WHERE org_id = #{orgId} 
+ </delete>  
+ <select id="findById" parameterType="java.lang.String" resultMap="CrmCustomerOriginResultMap">  
+  SELECT t.* FROM crm_customer_origin t WHERE t.org_id = #{orgId} 
+ </select>  
+ </mapper>  
+ 

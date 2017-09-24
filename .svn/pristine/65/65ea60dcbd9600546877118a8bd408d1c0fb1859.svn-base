@@ -1,0 +1,14 @@
+package cn.easymis.uc.service;
+
+import java.util.List;
+
+import cn.easymis.entitys.mybatis.dto.Function;
+
+public interface FunctionMng {
+	public void save(cn.easymis.entitys.mybatis.dto.Function bean);
+	public void update(Function bean);
+	public void deleteById(String id);
+	public Function findById(String id);
+	public List<Function> getList(Function bean);
+	public List<Function> getListOnStaff(Function bean);	
+}

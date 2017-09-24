@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Implementation-Title: easymis.oa.web Maven Webapp
+Copyright: sgcc-login
+Project-name: easymis.oa.web Maven Webapp
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: Administrator
+Implementation-Vendor-Id: easymis
+Build-Time: 2017-09-20 09:53:26
+Project-version: 0.0.1-SNAPSHOT
+Build-Jdk: 1.8.0_31
+Created-By: Maven Integration for Eclipse
+

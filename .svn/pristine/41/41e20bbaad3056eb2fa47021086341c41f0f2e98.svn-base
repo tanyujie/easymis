@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ieker.ierp.core.mapper.CmsUserExtMapper">
+	<resultMap id="CmsUserExtResultMap" type="com.ieker.ierp.core.entity.CmsUserExt">
+		<result column="user_id" jdbcType="INTEGER" property="id" />
+		<result column="money" jdbcType="FLOAT" property="money" />
+		<result column="frozenMoney" jdbcType="FLOAT" property="frozenMoney" />
+	</resultMap>
+	<select id="getList" resultMap="CmsUserExtResultMap">
+		select * from jc_user_ext
+	</select>
+	<select id="findById" parameterType="java.lang.Integer"
+		resultMap="CmsUserExtResultMap">
+		select * from jc_user_ext where user_id =#{logId,jdbcType=VARCHAR}
+	</select>
+	
+	<insert id="save" parameterType="com.ieker.ierp.core.entity.CmsUserExt">
+		insert into jc_user_ext(log_id,member_id,order_id, log_amount, log_type,
+		status,subject,content,log_Date,cashout_id)
+		values (#{logId,jdbcType=VARCHAR}, #{memberId,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR},	#{logAmount,jdbcType=FLOAT},#{logType,jdbcType=INTEGER}, 
+		#{status,jdbcType=BOOLEAN}, #{subject,jdbcType=VARCHAR},#{content,jdbcType=VARCHAR}, #{logDate,jdbcType=TIMESTAMP},#{cashoutId,jdbcType=VARCHAR})
+	</insert>
+	<update id="update" parameterType="com.ieker.ierp.core.entity.CmsUserExt">
+		update jc_user_ext
+		set money = #{money,jdbcType=VARCHAR}
+		where user_id = #{id,jdbcType=CHAR}
+	</update>
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from jc_user_ext
+		where log_id = #{orderId,jdbcType=VARCHAR}
+	</delete>
+</mapper>

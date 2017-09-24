@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+ <!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">   
+ <mapper namespace="cn.easymis.entitys.mybatis.mapper.CrmVisitMapper">   
+ <resultMap id="CrmVisitResultMap" type="cn.easymis.entitys.mybatis.dto.CrmVisitDto">  
+<result column="visit_id" property="visitId" jdbcType="VARCHAR"/> 
+<result column="creator_id" property="creatorId" jdbcType="VARCHAR"/> 
+<result column="org_id" property="orgId" jdbcType="VARCHAR"/> 
+<result column="customer_Id" property="customerId" jdbcType="VARCHAR"/> 
+<result column="topic" property="topic" jdbcType="VARCHAR"/> 
+<result column="visit_Date" property="visitDate" jdbcType="DATE"/> 
+</resultMap>  
+<select id="getList" parameterType="map" resultMap="CrmVisitResultMap">   
+  SELECT t.* FROM crm_visit t   
+ </select>  
+ <insert id="save" parameterType="cn.easymis.entitys.mybatis.dto.CrmVisitDto">  
+ INSERT INTO crm_visit(visit_id,creator_id,org_id,customer_Id,topic,visit_Date)values(#{visitId},#{creatorId},#{orgId},#{customerId},#{topic},#{visitDate}) 
+ </insert>  
+ <update id="update" parameterType="cn.easymis.entitys.mybatis.dto.CrmVisitDto">  
+  UPDATE crm_visit SET visit_id= #{visitId},creator_id= #{creatorId},org_id= #{orgId},customer_Id= #{customerId},topic= #{topic},visit_Date= #{visitDate} WHERE visit_id= #{visitId} 
+ </update> 
+ <delete id="delete" parameterType="java.lang.String"> 
+  DELETE FROM crm_visit WHERE visit_id = #{visitId} 
+ </delete>  
+ <select id="findById" parameterType="java.lang.String" resultMap="CrmVisitResultMap">  
+  SELECT t.* FROM crm_visit t WHERE t.visit_id = #{visitId} 
+ </select>  
+ </mapper>  
+ 

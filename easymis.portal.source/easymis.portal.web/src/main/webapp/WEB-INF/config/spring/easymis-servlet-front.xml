@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:p="http://www.springframework.org/schema/p" 
+    xmlns:mvc="http://www.springframework.org/schema/mvc" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation=" 
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd 
+        http://www.springframework.org/schema/mvc 
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd 
+        http://www.springframework.org/schema/context   
+        http://www.springframework.org/schema/context/spring-context.xsd"> 
+<!-- 	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="cacheSeconds" value="-1"/>
+		<property name="basenames" value="#{propertyUtils.getList('messages.front.')}"/>
+	</bean> -->
+    <!-- 扫描com.ieker.easymis包下的所有class文件，配置注解的类全都装入容器中进行管理 -->
+    <context:component-scan base-package="com.ieker.easymis.uc" />
+    <!-- 配置视图解析器，即如何把handler方法返回值解析为实际的物理视图 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>
+    <!-- 添加注解驱动 Spring mvc转换器-->
+    <mvc:annotation-driven></mvc:annotation-driven>
+    <!-- 静态资源映射 -->
+    <mvc:default-servlet-handler/>
+   	<mvc:resources location="/public/" mapping="/public/**"/>
+<!--     <mvc:view-controller path="/" view-name="redirect:/index.jspx"/> -->
+<!-- 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/> -->
+	<bean id="frontContextInterceptor" class="com.ieker.easymis.core.web.FrontContextInterceptor"/>
+	<bean id="frontLocaleInterceptor" class="com.ieker.easymis.core.web.FrontLocaleInterceptor"/>
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="webBindingInitializer">
+			<bean class="com.ieker.easymis.core.web.springmvc.BindingInitializer"/>
+		</property>
+	</bean>
+	
+	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+		<property name="interceptors">
+			<list>
+				<ref bean="frontContextInterceptor"/>
+				<ref bean="frontLocaleInterceptor"/>
+			</list>
+		</property>
+	</bean>
+	    <!-- 自定义拦截器 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/static/**"/>
+            <ref bean="frontContextInterceptor"/>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <ref bean="frontLocaleInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+		<property name="cookieName" value="clientlanguage"/>
+		<property name="cookieMaxAge" value="-1"/>
+	</bean>
+	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="org.springframework.web.bind.MissingServletRequestParameterException">/WEB-INF/error/requiredParameter.html</prop>
+				<prop key="org.springframework.beans.TypeMismatchException">/WEB-INF/error/mismatchParameter.html</prop>
+				<prop key="org.springframework.web.bind.ServletRequestBindingException">/WEB-INF/error/bindException.html</prop>
+				<prop key="com.ieker.common.web.SiteNotFoundException">/WEB-INF/error/siteNotFoundException.html</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="freemarkerViewResolver" class="com.ieker.easymis.core.web.springmvc.SimpleFreeMarkerViewResolver">
+	     <property name="order" value="1" />
+        <property name="suffix" value=".html" />
+		<property name="contentType" value="text/html; charset=UTF-8"/>
+		<property name="exposeRequestAttributes" value="false"/>
+		<property name="exposeSessionAttributes" value="false"/>
+		<property name="exposeSpringMacroHelpers" value="true"/>
+		<property name="viewClass">
+            <value>org.springframework.web.servlet.view.freemarker.FreeMarkerView</value>
+        </property>
+	</bean>
+	    <!-- FreeMarker视图解析器  -->
+<!--     <bean id="freemarkerResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="order" value="1" />
+        <property name="suffix" value=".html" />
+        <property name="contentType" value="text/html;charset=utf-8" />
+        <property name="viewClass">
+            <value>org.springframework.web.servlet.view.freemarker.FreeMarkerView</value>
+        </property>
+    </bean> -->
+	<bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+		<!--获取标签配置-->
+		<property name="freemarkerVariables" value="#{propertyUtils.getBeanMap('directive.')}"/>
+		<property name="templateLoaderPath">
+            <value>/WEB-INF/views</value>
+        </property>
+		<property name="freemarkerSettings">
+			<props>
+				<prop key="tag_syntax">auto_detect</prop>
+				<prop key="template_update_delay">5</prop>
+				<prop key="defaultEncoding">UTF-8</prop>
+				<prop key="url_escaping_charset">UTF-8</prop>
+				<prop key="locale">zh_CN</prop>
+				<prop key="boolean_format">true,false</prop>
+				<prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
+				<prop key="date_format">yyyy-MM-dd</prop>
+				<prop key="time_format">HH:mm:ss</prop>
+				<prop key="number_format">0.######</prop>
+				<prop key="whitespace_stripping">true</prop>
+				<!--空值处理<prop key="classic_compatible">true</prop>-->
+ 				<prop key="auto_import">/ftl/iekercms/index.ftl as p,/ftl/spring.ftl as s</prop>
+			</props>
+		</property>
+	</bean>
+ <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" p:ignoreDefaultModelOnRedirect="true" >
+	<property name="messageConverters">
+            <list>
+		<bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/>
+            </list>
+	</property>
+    </bean>
+
+	<context:annotation-config/>
+	<mvc:annotation-driven/>
+</beans>

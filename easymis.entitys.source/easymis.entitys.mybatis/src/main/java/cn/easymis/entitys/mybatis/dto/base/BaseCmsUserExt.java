@@ -1,0 +1,322 @@
+package cn.easymis.entitys.mybatis.dto.base;
+
+import java.io.Serializable;
+
+import cn.easymis.entitys.mybatis.dto.OaUser;
+import cn.easymis.entitys.mybatis.dto.CmsUserExt;
+
+
+/**
+ * This is an object that contains data related to the jc_user_ext table.
+ * Do not modify this class because it will be overwritten if the configuration file
+ * related to this class is modified.
+ *
+ * @hibernate.class
+ *  table="jc_user_ext"
+ */
+
+public abstract class BaseCmsUserExt  implements Serializable {
+
+	public static String REF = "CmsUserExt";
+	public static String PROP_MSN = "msn";
+	public static String PROP_BIRTHDAY = "birthday";
+	public static String PROP_GENDER = "gender";
+	public static String PROP_MOBILE = "mobile";
+	public static String PROP_COMEFROM = "comefrom";
+	public static String PROP_USER = "user";
+	public static String PROP_INTRO = "intro";
+	public static String PROP_REALNAME = "realname";
+	public static String PROP_QQ = "qq";
+	public static String PROP_ID = "id";
+	public static String PROP_PHONE = "phone";
+
+
+	// constructors
+	public BaseCmsUserExt () {
+		initialize();
+	}
+
+	/**
+	 * Constructor for primary key
+	 */
+	public BaseCmsUserExt (java.lang.String id) {
+		this.setId(id);
+		initialize();
+	}
+
+	protected void initialize () {}
+
+
+
+	private int hashCode = Integer.MIN_VALUE;
+
+	// primary key
+	private java.lang.String id;
+
+	// fields
+	private java.lang.String nickname;
+	private java.lang.Boolean gender;
+	private java.util.Date birthday;
+	private java.lang.String intro;
+	private java.lang.String comefrom;
+	private java.lang.String qq;
+	private java.lang.String msn;
+	private java.lang.String phone;
+	private java.lang.String mobile;
+	private java.lang.String userSignature;
+	private java.lang.Integer docNum;
+	private java.lang.Integer bpValue;
+	private Float money;
+	private Float frozenMoney;
+	private Integer registerChannel;
+	// one to one
+	private OaUser user;
+
+
+
+	public Integer getRegisterChannel() {
+		return registerChannel;
+	}
+
+	public void setRegisterChannel(Integer registerChannel) {
+		this.registerChannel = registerChannel;
+	}
+
+	public Float getMoney() {
+		return money;
+	}
+
+	public void setMoney(Float money) {
+		this.money = money;
+	}
+
+	public Float getFrozenMoney() {
+		return frozenMoney;
+	}
+
+	public void setFrozenMoney(Float frozenMoney) {
+		this.frozenMoney = frozenMoney;
+	}
+
+
+
+
+
+	public java.lang.String getId() {
+		return id;
+	}
+
+	public void setId(java.lang.String id) {
+		this.id = id;
+	}
+
+	public java.lang.Integer getDocNum() {
+		return docNum;
+	}
+
+	public void setDocNum(java.lang.Integer docNum) {
+		this.docNum = docNum;
+	}
+
+
+
+
+	public java.lang.Integer getBpValue() {
+		return bpValue;
+	}
+
+	public void setBpValue(java.lang.Integer bpValue) {
+		this.bpValue = bpValue;
+	}
+
+	public java.lang.String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(java.lang.String nickname) {
+		this.nickname = nickname;
+	}
+
+	/**
+	 * Return the value associated with the column: gender
+	 */
+	public java.lang.Boolean getGender () {
+		return gender;
+	}
+
+	/**
+	 * Set the value related to the column: gender
+	 * @param gender the gender value
+	 */
+	public void setGender (java.lang.Boolean gender) {
+		this.gender = gender;
+	}
+
+
+	/**
+	 * Return the value associated with the column: birthday
+	 */
+	public java.util.Date getBirthday () {
+		return birthday;
+	}
+
+	/**
+	 * Set the value related to the column: birthday
+	 * @param birthday the birthday value
+	 */
+	public void setBirthday (java.util.Date birthday) {
+		this.birthday = birthday;
+	}
+
+
+	/**
+	 * Return the value associated with the column: intro
+	 */
+	public java.lang.String getIntro () {
+		return intro;
+	}
+
+	/**
+	 * Set the value related to the column: intro
+	 * @param intro the intro value
+	 */
+	public void setIntro (java.lang.String intro) {
+		this.intro = intro;
+	}
+
+
+	/**
+	 * Return the value associated with the column: comefrom
+	 */
+	public java.lang.String getComefrom () {
+		return comefrom;
+	}
+
+	/**
+	 * Set the value related to the column: comefrom
+	 * @param comefrom the comefrom value
+	 */
+	public void setComefrom (java.lang.String comefrom) {
+		this.comefrom = comefrom;
+	}
+
+
+	/**
+	 * Return the value associated with the column: qq
+	 */
+	public java.lang.String getQq () {
+		return qq;
+	}
+
+	/**
+	 * Set the value related to the column: qq
+	 * @param qq the qq value
+	 */
+	public void setQq (java.lang.String qq) {
+		this.qq = qq;
+	}
+
+
+	/**
+	 * Return the value associated with the column: msn
+	 */
+	public java.lang.String getMsn () {
+		return msn;
+	}
+
+	/**
+	 * Set the value related to the column: msn
+	 * @param msn the msn value
+	 */
+	public void setMsn (java.lang.String msn) {
+		this.msn = msn;
+	}
+
+
+	/**
+	 * Return the value associated with the column: phone
+	 */
+	public java.lang.String getPhone () {
+		return phone;
+	}
+
+	/**
+	 * Set the value related to the column: phone
+	 * @param phone the phone value
+	 */
+	public void setPhone (java.lang.String phone) {
+		this.phone = phone;
+	}
+
+
+	/**
+	 * Return the value associated with the column: mobile
+	 */
+	public java.lang.String getMobile () {
+		return mobile;
+	}
+
+	/**
+	 * Set the value related to the column: mobile
+	 * @param mobile the mobile value
+	 */
+	public void setMobile (java.lang.String mobile) {
+		this.mobile = mobile;
+	}
+
+
+
+	public java.lang.String getUserSignature() {
+		return userSignature;
+	}
+
+	public void setUserSignature(java.lang.String userSignature) {
+		this.userSignature = userSignature;
+	}
+
+
+	/**
+	 * Return the value associated with the column: user
+	 */
+	public OaUser getUser () {
+		return user;
+	}
+
+	/**
+	 * Set the value related to the column: user
+	 * @param user the user value
+	 */
+	public void setUser (OaUser user) {
+		this.user = user;
+	}
+
+
+
+	public boolean equals (Object obj) {
+		if (null == obj) return false;
+		if (!(obj instanceof CmsUserExt)) return false;
+		else {
+			CmsUserExt cmsUserExt = (CmsUserExt) obj;
+			if (null == this.getId() || null == cmsUserExt.getId()) return false;
+			else return (this.getId().equals(cmsUserExt.getId()));
+		}
+	}
+
+	public int hashCode () {
+		if (Integer.MIN_VALUE == this.hashCode) {
+			if (null == this.getId()) return super.hashCode();
+			else {
+				String hashStr = this.getClass().getName() + ":" + this.getId().hashCode();
+				this.hashCode = hashStr.hashCode();
+			}
+		}
+		return this.hashCode;
+	}
+
+
+	public String toString () {
+		return super.toString();
+	}
+
+
+}

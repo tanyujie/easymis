@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+ <!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">   
+ <mapper namespace="cn.easymis.entitys.mybatis.mapper.ScmCodeRuleMapper">   
+ <resultMap id="ScmCodeRuleResultMap" type="cn.easymis.entitys.mybatis.dto.ScmCodeRuleDto">  
+<result column="coderule_id" property="coderuleId" jdbcType="VARCHAR"/> 
+<result column="bill_type" property="billType" jdbcType="VARCHAR"/> 
+<result column="name" property="name" jdbcType="VARCHAR"/> 
+<result column="demo" property="demo" jdbcType="VARCHAR"/> 
+<result column="start_no" property="startNo" jdbcType="VARCHAR"/> 
+<result column="defaults" property="defaults" jdbcType="VARCHAR"/> 
+<result column="prefix" property="prefix" jdbcType="VARCHAR"/> 
+<result column="digits" property="digits" jdbcType="VARCHAR"/> 
+<result column="org_id" property="orgId" jdbcType="VARCHAR"/> 
+</resultMap>  
+<select id="getList" parameterType="map" resultMap="ScmCodeRuleResultMap">   
+  SELECT t.* FROM scm_coderule t   
+ </select>  
+ <insert id="save" parameterType="cn.easymis.entitys.mybatis.dto.ScmCodeRuleDto">  
+ INSERT INTO scm_coderule(coderule_id,bill_type,name,demo,start_no,defaults,prefix,digits,org_id)values(#{coderuleId},#{billType},#{name},#{demo},#{startNo},#{defaults},#{prefix},#{digits},#{orgId}) 
+ </insert>  
+ <update id="update" parameterType="cn.easymis.entitys.mybatis.dto.ScmCodeRuleDto">  
+  UPDATE scm_coderule SET coderule_id= #{coderuleId},bill_type= #{billType},name= #{name},demo= #{demo},start_no= #{startNo},defaults= #{defaults},prefix= #{prefix},digits= #{digits},org_id= #{orgId} WHERE coderule_id= #{coderuleId} 
+ </update> 
+ <delete id="delete" parameterType="java.lang.String"> 
+  DELETE FROM scm_coderule WHERE coderule_id = #{coderuleId} 
+ </delete>  
+ <select id="findById" parameterType="java.lang.String" resultMap="ScmCodeRuleResultMap">  
+  SELECT t.* FROM scm_coderule t WHERE t.coderule_id = #{coderuleId} 
+ </select>  
+ </mapper>  
+ 

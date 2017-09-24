@@ -1,0 +1,50 @@
+package cn.easymis.uc.service.impl;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import cn.easymis.entitys.mybatis.dto.Function;
+import cn.easymis.uc.service.FunctionMng;
+@Service
+@Transactional
+public class FunctionMngImpl implements FunctionMng {
+
+	@Override
+	public void save(Function bean) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(Function bean) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteById(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Function findById(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Function> getList(Function bean) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Function> getListOnStaff(Function bean) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+ <!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">   
+ <mapper namespace="cn.easymis.entitys.mybatis.mapper.CrmCustomerMapper">   
+ <resultMap id="CrmCustomerResultMap" type="cn.easymis.entitys.mybatis.dto.CrmCustomerDto">  
+<result column="customer_id" property="customerId" jdbcType="VARCHAR"/> 
+<result column="org_id" property="orgId" jdbcType="VARCHAR"/> 
+<result column="company_id" property="companyId" jdbcType="VARCHAR"/> 
+<result column="owner_id" property="ownerId" jdbcType="VARCHAR"/> 
+<result column="creator_id" property="creatorId" jdbcType="VARCHAR"/> 
+<result column="contacts_id" property="contactsId" jdbcType="VARCHAR"/> 
+<result column="customer_name" property="customerName" jdbcType="VARCHAR"/> 
+<result column="origin_id" property="originId" jdbcType="VARCHAR"/> 
+<result column="street" property="street" jdbcType="VARCHAR"/> 
+<result column="zip_Code" property="zipCode" jdbcType="VARCHAR"/> 
+<result column="level1_Industry_id" property="level1IndustryId" jdbcType="VARCHAR"/> 
+<result column="annual_Revenue" property="annualRevenue" jdbcType="VARCHAR"/> 
+<result column="ownership" property="ownership" jdbcType="VARCHAR"/> 
+<result column="rating" property="rating" jdbcType="VARCHAR"/> 
+<result column="create_Time" property="createTime" jdbcType="DATE"/> 
+<result column="update_Time" property="updateTime" jdbcType="DATE"/> 
+<result column="deleted" property="deleted" jdbcType="INTEGER"/> 
+<result column="locked" property="locked" jdbcType="INTEGER"/> 
+<result column="delete_id" property="deleteId" jdbcType="VARCHAR"/> 
+<result column="delete_Time" property="deleteTime" jdbcType="DATE"/> 
+<result column="country_id" property="countryId" jdbcType="VARCHAR"/> 
+<result column="province_id" property="provinceId" jdbcType="VARCHAR"/> 
+<result column="city_id" property="cityId" jdbcType="VARCHAR"/> 
+<result column="business_License_No" property="businessLicenseNo" jdbcType="VARCHAR"/> 
+<result column="legal_Person" property="legalPerson" jdbcType="VARCHAR"/> 
+<result column="registered_Capital" property="registeredCapital" jdbcType="VARCHAR"/> 
+<result column="business_Scope" property="businessScope" jdbcType="VARCHAR"/> 
+<result column="phone" property="phone" jdbcType="VARCHAR"/> 
+<result column="email" property="email" jdbcType="VARCHAR"/> 
+<result column="qq" property="qq" jdbcType="VARCHAR"/> 
+<result column="ipo" property="ipo" jdbcType="INTEGER"/> 
+<result column="stock_Code" property="stockCode" jdbcType="VARCHAR"/> 
+<result column="code" property="code" jdbcType="VARCHAR"/> 
+<result column="level2_Industry_id" property="level2IndustryId" jdbcType="VARCHAR"/> 
+<result column="level3_Industry_id" property="level3IndustryId" jdbcType="VARCHAR"/> 
+<result column="level4_Industry_id" property="level4IndustryId" jdbcType="VARCHAR"/> 
+<result column="tax_No" property="taxNo" jdbcType="VARCHAR"/> 
+<result column="bank_No" property="bankNo" jdbcType="VARCHAR"/> 
+<result column="bankName" property="bankName" jdbcType="VARCHAR"/> 
+<result column="category_id" property="categoryId" jdbcType="VARCHAR"/> 
+<result column="district_id" property="districtId" jdbcType="VARCHAR"/> 
+<result column="url" property="url" jdbcType="VARCHAR"/> 
+<result column="blog" property="blog" jdbcType="VARCHAR"/> 
+<result column="fax" property="fax" jdbcType="VARCHAR"/> 
+<result column="depict" property="depict" jdbcType="VARCHAR"/> 
+<result column="headcount" property="headcount" jdbcType="VARCHAR"/> 
+</resultMap>  
+<select id="getList" parameterType="map" resultMap="CrmCustomerResultMap">   
+  SELECT t.* FROM crm_customer t   
+ </select>  
+ <insert id="save" parameterType="cn.easymis.entitys.mybatis.dto.CrmCustomerDto">  
+ INSERT INTO crm_customer(customer_id,org_id,company_id,owner_id,creator_id,contacts_id,customer_name,origin_id,street,zip_Code,level1_Industry_id,annual_Revenue,ownership,rating,create_Time,update_Time,deleted,locked,delete_id,delete_Time,country_id,province_id,city_id,business_License_No,legal_Person,registered_Capital,business_Scope,phone,email,qq,ipo,stock_Code,code,level2_Industry_id,level3_Industry_id,level4_Industry_id,tax_No,bank_No,bankName,category_id,district_id,url,blog,fax,depict,headcount)values(#{customerId},#{orgId},#{companyId},#{ownerId},#{creatorId},#{contactsId},#{customerName},#{originId},#{street},#{zipCode},#{level1IndustryId},#{annualRevenue},#{ownership},#{rating},#{createTime},#{updateTime},#{deleted},#{locked},#{deleteId},#{deleteTime},#{countryId},#{provinceId},#{cityId},#{businessLicenseNo},#{legalPerson},#{registeredCapital},#{businessScope},#{phone},#{email},#{qq},#{ipo},#{stockCode},#{code},#{level2IndustryId},#{level3IndustryId},#{level4IndustryId},#{taxNo},#{bankNo},#{bankName},#{categoryId},#{districtId},#{url},#{blog},#{fax},#{depict},#{headcount}) 
+ </insert>  
+ <update id="update" parameterType="cn.easymis.entitys.mybatis.dto.CrmCustomerDto">  
+  UPDATE crm_customer SET customer_id= #{customerId},org_id= #{orgId},company_id= #{companyId},owner_id= #{ownerId},creator_id= #{creatorId},contacts_id= #{contactsId},customer_name= #{customerName},origin_id= #{originId},street= #{street},zip_Code= #{zipCode},level1_Industry_id= #{level1IndustryId},annual_Revenue= #{annualRevenue},ownership= #{ownership},rating= #{rating},create_Time= #{createTime},update_Time= #{updateTime},deleted= #{deleted},locked= #{locked},delete_id= #{deleteId},delete_Time= #{deleteTime},country_id= #{countryId},province_id= #{provinceId},city_id= #{cityId},business_License_No= #{businessLicenseNo},legal_Person= #{legalPerson},registered_Capital= #{registeredCapital},business_Scope= #{businessScope},phone= #{phone},email= #{email},qq= #{qq},ipo= #{ipo},stock_Code= #{stockCode},code= #{code},level2_Industry_id= #{level2IndustryId},level3_Industry_id= #{level3IndustryId},level4_Industry_id= #{level4IndustryId},tax_No= #{taxNo},bank_No= #{bankNo},bankName= #{bankName},category_id= #{categoryId},district_id= #{districtId},url= #{url},blog= #{blog},fax= #{fax},depict= #{depict},headcount= #{headcount} WHERE customer_id= #{customerId} 
+ </update> 
+ <delete id="delete" parameterType="java.lang.String"> 
+  DELETE FROM crm_customer WHERE customer_id = #{customerId} 
+ </delete>  
+ <select id="findById" parameterType="java.lang.String" resultMap="CrmCustomerResultMap">  
+  SELECT t.* FROM crm_customer t WHERE t.customer_id = #{customerId} 
+ </select>  
+ </mapper>  
+ 

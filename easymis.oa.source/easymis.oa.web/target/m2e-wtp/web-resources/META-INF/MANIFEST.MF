@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Implementation-Title: easymis.oa.web Maven Webapp
+Copyright: easymis-login
+Project-name: easymis.oa.web Maven Webapp
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: lenovo-t
+Implementation-Vendor-Id: easymis
+Build-Time: 2017-09-24 12:16:02
+Project-version: 0.0.1-SNAPSHOT
+Build-Jdk: 1.8.0_91
+Created-By: Maven Integration for Eclipse
+

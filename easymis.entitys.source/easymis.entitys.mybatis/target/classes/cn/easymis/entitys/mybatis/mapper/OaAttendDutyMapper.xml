@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+ <!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">   
+ <mapper namespace="cn.easymis.entitys.mybatis.mapper.OaAttendDutyMapper">   
+ <resultMap id="OaAttendDutyResultMap" type="cn.easymis.entitys.mybatis.dto.OaAttendDutyDto">  
+<result column="attend_duty_id" property="attendDutyId" jdbcType="VARCHAR"/> 
+<result column="org_id" property="orgId" jdbcType="VARCHAR"/> 
+<result column="employee_id" property="employeeId" jdbcType="VARCHAR"/> 
+<result column="register_count" property="registerCount" jdbcType="INTEGER"/> 
+<result column="register_time" property="registerTime" jdbcType="DATE"/> 
+<result column="end_time" property="endTime" jdbcType="DATE"/> 
+<result column="reg_ip" property="regIp" jdbcType="VARCHAR"/> 
+<result column="remark" property="remark" jdbcType="VARCHAR"/> 
+<result column="duty_type" property="dutyType" jdbcType="INTEGER"/> 
+<result column="is_mobile" property="isMobile" jdbcType="INTEGER"/> 
+<result column="mobile_id" property="mobileId" jdbcType="VARCHAR"/> 
+<result column="longitude" property="longitude" jdbcType="VARCHAR"/> 
+<result column="latitude" property="latitude" jdbcType="VARCHAR"/> 
+<result column="location" property="location" jdbcType="VARCHAR"/> 
+<result column="province" property="province" jdbcType="VARCHAR"/> 
+<result column="is_foot" property="isFoot" jdbcType="INTEGER"/> 
+<result column="attachmen_id" property="attachmenId" jdbcType="VARCHAR"/> 
+<result column="attachment_name" property="attachmentName" jdbcType="VARCHAR"/> 
+</resultMap>  
+<select id="getList" parameterType="map" resultMap="OaAttendDutyResultMap">   
+  SELECT t.* FROM oa_attend_duty t   
+ </select>  
+ <insert id="save" parameterType="cn.easymis.entitys.mybatis.dto.OaAttendDutyDto">  
+ INSERT INTO oa_attend_duty(attend_duty_id,org_id,employee_id,register_count,register_time,end_time,reg_ip,remark,duty_type,is_mobile,mobile_id,longitude,latitude,location,province,is_foot,attachmen_id,attachment_name)values(#{attendDutyId},#{orgId},#{employeeId},#{registerCount},#{registerTime},#{endTime},#{regIp},#{remark},#{dutyType},#{isMobile},#{mobileId},#{longitude},#{latitude},#{location},#{province},#{isFoot},#{attachmenId},#{attachmentName}) 
+ </insert>  
+ <update id="update" parameterType="cn.easymis.entitys.mybatis.dto.OaAttendDutyDto">  
+  UPDATE oa_attend_duty SET attend_duty_id= #{attendDutyId},org_id= #{orgId},employee_id= #{employeeId},register_count= #{registerCount},register_time= #{registerTime},end_time= #{endTime},reg_ip= #{regIp},remark= #{remark},duty_type= #{dutyType},is_mobile= #{isMobile},mobile_id= #{mobileId},longitude= #{longitude},latitude= #{latitude},location= #{location},province= #{province},is_foot= #{isFoot},attachmen_id= #{attachmenId},attachment_name= #{attachmentName} WHERE attend_duty_id= #{attendDutyId} 
+ </update> 
+ <delete id="delete" parameterType="java.lang.String"> 
+  DELETE FROM oa_attend_duty WHERE attend_duty_id = #{attendDutyId} 
+ </delete>  
+ <select id="findById" parameterType="java.lang.String" resultMap="OaAttendDutyResultMap">  
+  SELECT t.* FROM oa_attend_duty t WHERE t.attend_duty_id = #{attendDutyId} 
+ </select>  
+ </mapper>  
+ 

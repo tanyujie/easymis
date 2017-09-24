@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+ <!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">   
+ <mapper namespace="cn.easymis.entitys.mybatis.mapper.OaRoleMapper">   
+ <resultMap id="OaRoleResultMap" type="cn.easymis.entitys.mybatis.dto.OaRoleDto">  
+<result column="role_id" property="roleId" jdbcType="VARCHAR"/> 
+<result column="org_id" property="orgId" jdbcType="VARCHAR"/> 
+<result column="role_name" property="roleName" jdbcType="VARCHAR"/> 
+<result column="priority" property="priority" jdbcType="INTEGER"/> 
+<result column="is_super" property="isSuper" jdbcType="INTEGER"/> 
+<result column="depict" property="depict" jdbcType="VARCHAR"/> 
+<result column="level" property="level" jdbcType="INTEGER"/> 
+</resultMap>  
+<select id="getList" parameterType="map" resultMap="OaRoleResultMap">   
+  SELECT t.* FROM oa_role t   
+ </select>  
+ <insert id="save" parameterType="cn.easymis.entitys.mybatis.dto.OaRoleDto">  
+ INSERT INTO oa_role(role_id,org_id,role_name,priority,is_super,depict,level)values(#{roleId},#{orgId},#{roleName},#{priority},#{isSuper},#{depict},#{level}) 
+ </insert>  
+ <update id="update" parameterType="cn.easymis.entitys.mybatis.dto.OaRoleDto">  
+  UPDATE oa_role SET role_id= #{roleId},org_id= #{orgId},role_name= #{roleName},priority= #{priority},is_super= #{isSuper},depict= #{depict},level= #{level} WHERE role_id= #{roleId} 
+ </update> 
+ <delete id="delete" parameterType="java.lang.String"> 
+  DELETE FROM oa_role WHERE role_id = #{roleId} 
+ </delete>  
+ <select id="findById" parameterType="java.lang.String" resultMap="OaRoleResultMap">  
+  SELECT t.* FROM oa_role t WHERE t.role_id = #{roleId} 
+ </select>  
+ </mapper>  
+ 

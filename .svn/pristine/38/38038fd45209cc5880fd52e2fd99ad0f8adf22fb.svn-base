@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+ <!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">   
+ <mapper namespace="cn.easymis.entitys.mybatis.mapper.HrmResumeMapper">   
+ <resultMap id="HrmResumeResultMap" type="cn.easymis.entitys.mybatis.dto.HrmResumeDto">  
+<result column="resume_id" property="resumeId" jdbcType="VARCHAR"/> 
+<result column="org_id" property="orgId" jdbcType="VARCHAR"/> 
+<result column="resume_name" property="resumeName" jdbcType="VARCHAR"/> 
+<result column="recruit_channel_id" property="recruitChannelId" jdbcType="VARCHAR"/> 
+<result column="resume_no" property="resumeNo" jdbcType="INTEGER"/> 
+<result column="status" property="status" jdbcType="VARCHAR"/> 
+<result column="phone" property="phone" jdbcType="VARCHAR"/> 
+<result column="diploma" property="diploma" jdbcType="VARCHAR"/> 
+<result column="email" property="email" jdbcType="VARCHAR"/> 
+<result column="current_Company" property="currentCompany" jdbcType="VARCHAR"/> 
+<result column="specialty" property="specialty" jdbcType="VARCHAR"/> 
+<result column="qq" property="qq" jdbcType="VARCHAR"/> 
+<result column="work_Years" property="workYears" jdbcType="VARCHAR"/> 
+<result column="birth_Date" property="birthDate" jdbcType="DATE"/> 
+<result column="sex" property="sex" jdbcType="VARCHAR"/> 
+<result column="apply_Date" property="applyDate" jdbcType="DATE"/> 
+<result column="live_address" property="liveAddress" jdbcType="VARCHAR"/> 
+<result column="address" property="address" jdbcType="VARCHAR"/> 
+<result column="postcode" property="postcode" jdbcType="VARCHAR"/> 
+<result column="recruiter_id" property="recruiterId" jdbcType="VARCHAR"/> 
+<result column="create_Time" property="createTime" jdbcType="DATE"/> 
+<result column="depict" property="depict" jdbcType="VARCHAR"/> 
+<result column="update_Time" property="updateTime" jdbcType="VARCHAR"/> 
+<result column="school" property="school" jdbcType="VARCHAR"/> 
+</resultMap>  
+<select id="getList" parameterType="map" resultMap="HrmResumeResultMap">   
+  SELECT t.* FROM hrm_resume t   
+ </select>  
+ <insert id="save" parameterType="cn.easymis.entitys.mybatis.dto.HrmResumeDto">  
+ INSERT INTO hrm_resume(resume_id,org_id,resume_name,recruit_channel_id,resume_no,status,phone,diploma,email,current_Company,specialty,qq,work_Years,birth_Date,sex,apply_Date,live_address,address,postcode,recruiter_id,create_Time,depict,update_Time,school)values(#{resumeId},#{orgId},#{resumeName},#{recruitChannelId},#{resumeNo},#{status},#{phone},#{diploma},#{email},#{currentCompany},#{specialty},#{qq},#{workYears},#{birthDate},#{sex},#{applyDate},#{liveAddress},#{address},#{postcode},#{recruiterId},#{createTime},#{depict},#{updateTime},#{school}) 
+ </insert>  
+ <update id="update" parameterType="cn.easymis.entitys.mybatis.dto.HrmResumeDto">  
+  UPDATE hrm_resume SET resume_id= #{resumeId},org_id= #{orgId},resume_name= #{resumeName},recruit_channel_id= #{recruitChannelId},resume_no= #{resumeNo},status= #{status},phone= #{phone},diploma= #{diploma},email= #{email},current_Company= #{currentCompany},specialty= #{specialty},qq= #{qq},work_Years= #{workYears},birth_Date= #{birthDate},sex= #{sex},apply_Date= #{applyDate},live_address= #{liveAddress},address= #{address},postcode= #{postcode},recruiter_id= #{recruiterId},create_Time= #{createTime},depict= #{depict},update_Time= #{updateTime},school= #{school} WHERE resume_id= #{resumeId} 
+ </update> 
+ <delete id="delete" parameterType="java.lang.String"> 
+  DELETE FROM hrm_resume WHERE resume_id = #{resumeId} 
+ </delete>  
+ <select id="findById" parameterType="java.lang.String" resultMap="HrmResumeResultMap">  
+  SELECT t.* FROM hrm_resume t WHERE t.resume_id = #{resumeId} 
+ </select>  
+ </mapper>  
+ 

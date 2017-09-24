@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+ <!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.easymis.entitys.mybatis.mapper.CrmBusinessMapper">
+	<resultMap id="CrmBusinessResultMap" type="cn.easymis.entitys.mybatis.dto.CrmBusinessDto">
+		<result column="business_id" property="businessId" jdbcType="VARCHAR" />
+		<result column="business_name" property="businessName"
+			jdbcType="VARCHAR" />
+		<result column="org_id" property="orgId" jdbcType="VARCHAR" />
+		<result column="origin" property="origin" jdbcType="VARCHAR" />
+		<result column="type" property="type" jdbcType="VARCHAR" />
+		<result column="creator_id" property="creatorId" jdbcType="VARCHAR" />
+		<result column="owner_id" property="ownerId" jdbcType="VARCHAR" />
+		<result column="gainRate" property="gainRate" jdbcType="INTEGER" />
+		<result column="total_amount" property="totalAmount" jdbcType="INTEGER" />
+		<result column="subtotal_val" property="subtotalVal" jdbcType="FLOAT" />
+		<result column="discount_price" property="discountPrice"
+			jdbcType="FLOAT" />
+		<result column="sales_price" property="salesPrice" jdbcType="FLOAT" />
+		<result column="due_date" property="dueDate" jdbcType="DATE" />
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+		<result column="update_time" property="updateTime" jdbcType="DATE" />
+		<result column="update_id" property="updateId" jdbcType="VARCHAR" />
+		<result column="status" property="status" jdbcType="INTEGER" />
+		<result column="total_price" property="totalPrice" jdbcType="FLOAT" />
+		<result column="nextstep" property="nextstep" jdbcType="VARCHAR" />
+		<result column="next_time" property="nextTime" jdbcType="DATE" />
+		<result column="deleted" property="deleted" jdbcType="INTEGER" />
+		<result column="delete_id" property="deleteId" jdbcType="VARCHAR" />
+		<result column="delete_time" property="deleteTime" jdbcType="DATE" />
+		<result column="contacts_id" property="contactsId" jdbcType="VARCHAR" />
+		<result column="contract_address" property="contractAddress"
+			jdbcType="VARCHAR" />
+		<result column="code" property="code" jdbcType="VARCHAR" />
+		<result column="company_id" property="companyId" jdbcType="VARCHAR" />
+		<result column="customer_id" property="customerId" jdbcType="VARCHAR" />
+		<result column="estimate_price" property="estimatePrice"
+			jdbcType="FLOAT" />
+		<result column="depict" property="depict" jdbcType="VARCHAR" />
+		<result column="lose" property="lose" jdbcType="VARCHAR" />
+	</resultMap>
+	<select id="getList" parameterType="map" resultMap="CrmBusinessResultMap">
+		SELECT t.* FROM crm_business t
+	</select>
+	<insert id="save" parameterType="cn.easymis.entitys.mybatis.dto.CrmBusinessDto">
+		INSERT INTO
+		crm_business(business_id,business_name,org_id,origin,type,creator_id,owner_id,gainRate,total_amount,subtotal_val,discount_price,sales_price,due_date,create_time,update_time,update_id,status,total_price,nextstep,next_time,deleted,delete_id,delete_time,contacts_id,contract_address,code,company_id,customer_id,estimate_price,depict,lose)values(#{businessId},#{businessName},#{orgId},#{origin},#{type},#{creatorId},#{ownerId},#{gainRate},#{totalAmount},#{subtotalVal},#{discountPrice},#{salesPrice},#{dueDate},#{createTime},#{updateTime},#{updateId},#{status},#{totalPrice},#{nextstep},#{nextTime},#{deleted},#{deleteId},#{deleteTime},#{contactsId},#{contractAddress},#{code},#{companyId},#{customerId},#{estimatePrice},#{depict},#{lose})
+	</insert>
+	<update id="update" parameterType="cn.easymis.entitys.mybatis.dto.CrmBusinessDto">
+		UPDATE crm_business SET business_id= #{businessId},business_name=
+		#{businessName},org_id= #{orgId},origin= #{origin},type=
+		#{type},creator_id= #{creatorId},owner_id= #{ownerId},gainRate=
+		#{gainRate},total_amount= #{totalAmount},subtotal_val=
+		#{subtotalVal},discount_price= #{discountPrice},sales_price=
+		#{salesPrice},due_date= #{dueDate},create_time=
+		#{createTime},update_time= #{updateTime},update_id=
+		#{updateId},status= #{status},total_price= #{totalPrice},nextstep=
+		#{nextstep},next_time= #{nextTime},deleted= #{deleted},delete_id=
+		#{deleteId},delete_time= #{deleteTime},contacts_id=
+		#{contactsId},contract_address= #{contractAddress},code=
+		#{code},company_id= #{companyId},customer_id=
+		#{customerId},estimate_price= #{estimatePrice},depict= #{depict},lose=
+		#{lose} WHERE business_id= #{businessId}
+	</update>
+	<delete id="delete" parameterType="java.lang.String">
+		DELETE FROM crm_business WHERE business_id = #{businessId}
+	</delete>
+	<select id="findById" parameterType="java.lang.String"
+		resultMap="CrmBusinessResultMap">
+		SELECT t.* FROM crm_business t WHERE t.business_id = #{businessId}
+	</select>
+</mapper>  
+ 

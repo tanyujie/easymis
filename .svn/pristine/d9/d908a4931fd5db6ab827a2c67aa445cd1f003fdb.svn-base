@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+ <!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">   
+ <mapper namespace="cn.easymis.entitys.mybatis.mapper.CrmCustomerIndustryMapper">   
+ <resultMap id="CrmCustomerIndustryResultMap" type="cn.easymis.entitys.mybatis.dto.CrmCustomerIndustryDto">  
+<result column="industry_id" property="industryId" jdbcType="VARCHAR"/> 
+<result column="industry_name" property="industryName" jdbcType="VARCHAR"/> 
+<result column="level" property="level" jdbcType="VARCHAR"/> 
+<result column="depict" property="depict" jdbcType="VARCHAR"/> 
+<result column="org_id" property="orgId" jdbcType="VARCHAR"/> 
+</resultMap>  
+<select id="getList" parameterType="map" resultMap="CrmCustomerIndustryResultMap">   
+  SELECT t.* FROM crm_customer_industry t   
+ </select>  
+ <insert id="save" parameterType="cn.easymis.entitys.mybatis.dto.CrmCustomerIndustryDto">  
+ INSERT INTO crm_customer_industry(industry_id,industry_name,level,depict,org_id)values(#{industryId},#{industryName},#{level},#{depict},#{orgId}) 
+ </insert>  
+ <update id="update" parameterType="cn.easymis.entitys.mybatis.dto.CrmCustomerIndustryDto">  
+  UPDATE crm_customer_industry SET industry_id= #{industryId},industry_name= #{industryName},level= #{level},depict= #{depict},org_id= #{orgId} WHERE industry_id= #{industryId} 
+ </update> 
+ <delete id="delete" parameterType="java.lang.String"> 
+  DELETE FROM crm_customer_industry WHERE industry_id = #{industryId} 
+ </delete>  
+ <select id="findById" parameterType="java.lang.String" resultMap="CrmCustomerIndustryResultMap">  
+  SELECT t.* FROM crm_customer_industry t WHERE t.industry_id = #{industryId} 
+ </select>  
+ </mapper>  
+ 

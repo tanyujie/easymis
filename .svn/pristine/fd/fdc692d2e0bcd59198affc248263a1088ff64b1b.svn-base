@@ -1,0 +1,47 @@
+package cn.easymis.entitys.mybatis.mapper;
+
+import java.util.List;
+import java.util.Map;
+
+import cn.easymis.entitys.mybatis.dto.CmsUser;
+
+/**
+ * 用户DAO接口
+ */
+public interface CmsUserMapper{
+	public List<CmsUser> getPage(String username, String email, Integer siteId,
+			Integer groupId, Boolean disabled, Boolean admin, Integer rank,
+			int pageNo, int pageSize);
+	
+	public List<CmsUser> getList(String username, String email, Integer siteId,
+			Integer groupId, Boolean disabled, Boolean admin, Integer rank);
+	public List<CmsUser> getPageBySiteIdsForTag(Integer[] siteIds,
+			Integer[] typeIds, Boolean titleImg, Integer userType,
+			String title, Map<String,String[]>attr,int orderBy, int pageNo, int pageSize);
+
+	public List<CmsUser> getListBySiteIdsForTag(Integer[] siteIds,
+			Integer[] typeIds, Boolean titleImg, Integer userType,
+			String title,Map<String,String[]>attr, int orderBy, Integer first, Integer count);
+	public List<CmsUser> getAdminList(Integer siteId, Boolean allChannel,
+			Boolean disabled, Integer rank);
+	
+	public List<CmsUser> getAdminsByDepartId(Integer id, int pageNo,int pageSize);
+	
+	public List<CmsUser> getAdminsByRoleId(Integer roleId, int pageNo, int pageSize);
+
+	public CmsUser findById(String id);
+
+	public CmsUser findByUsername(String username);
+
+	public int countByUsername(String username);
+	
+	public int countMemberByUsername(String username);
+
+	public int countByEmail(String email);
+
+	public void save(CmsUser bean);
+
+	public CmsUser update(CmsUser bean);
+
+	public CmsUser deleteById(Integer id);
+}

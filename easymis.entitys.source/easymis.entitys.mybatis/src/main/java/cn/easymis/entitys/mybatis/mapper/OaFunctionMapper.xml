@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+ <!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">   
+ <mapper namespace="cn.easymis.entitys.mybatis.mapper.OaFunctionMapper">   
+ <resultMap id="OaFunctionResultMap" type="cn.easymis.entitys.mybatis.dto.OaFunctionDto">  
+<result column="function_id" property="functionId" jdbcType="VARCHAR"/> 
+<result column="org_id" property="orgId" jdbcType="VARCHAR"/> 
+<result column="sys_code" property="sysCode" jdbcType="VARCHAR"/> 
+<result column="function_name" property="functionName" jdbcType="VARCHAR"/> 
+<result column="parent_id" property="parentId" jdbcType="VARCHAR"/> 
+<result column="level" property="level" jdbcType="INTEGER"/> 
+<result column="display_name" property="displayName" jdbcType="VARCHAR"/> 
+<result column="url" property="url" jdbcType="VARCHAR"/> 
+<result column="priority" property="priority" jdbcType="INTEGER"/> 
+<result column="depict" property="depict" jdbcType="VARCHAR"/> 
+<result column="is_deleted" property="isDeleted" jdbcType="INTEGER"/> 
+</resultMap>  
+<select id="getList" parameterType="map" resultMap="OaFunctionResultMap">   
+  SELECT t.* FROM oa_function t   
+ </select>  
+ <insert id="save" parameterType="cn.easymis.entitys.mybatis.dto.OaFunctionDto">  
+ INSERT INTO oa_function(function_id,org_id,sys_code,function_name,parent_id,level,display_name,url,priority,depict,is_deleted)values(#{functionId},#{orgId},#{sysCode},#{functionName},#{parentId},#{level},#{displayName},#{url},#{priority},#{depict},#{isDeleted}) 
+ </insert>  
+ <update id="update" parameterType="cn.easymis.entitys.mybatis.dto.OaFunctionDto">  
+  UPDATE oa_function SET function_id= #{functionId},org_id= #{orgId},sys_code= #{sysCode},function_name= #{functionName},parent_id= #{parentId},level= #{level},display_name= #{displayName},url= #{url},priority= #{priority},depict= #{depict},is_deleted= #{isDeleted} WHERE function_id= #{functionId} 
+ </update> 
+ <delete id="delete" parameterType="java.lang.String"> 
+  DELETE FROM oa_function WHERE function_id = #{functionId} 
+ </delete>  
+ <select id="findById" parameterType="java.lang.String" resultMap="OaFunctionResultMap">  
+  SELECT t.* FROM oa_function t WHERE t.function_id = #{functionId} 
+ </select>  
+ </mapper>  
+ 

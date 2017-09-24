@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: lenovo-t
+Build-Jdk: 1.8.0_91
+Specification-Title: easymis.commons.code.util
+Specification-Version: 0.0.1-SNAPSHOT
+Implementation-Title: easymis.commons.code.util
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: easymis
+Created-By: Maven Integration for Eclipse
+

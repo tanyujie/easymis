@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+ <!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">   
+ <mapper namespace="cn.easymis.entitys.mybatis.mapper.CrmMarketMapper">   
+ <resultMap id="CrmMarketResultMap" type="cn.easymis.entitys.mybatis.dto.CrmMarketDto">  
+<result column="market_id" property="marketId" jdbcType="VARCHAR"/> 
+<result column="creator_id" property="creatorId" jdbcType="VARCHAR"/> 
+<result column="org_id" property="orgId" jdbcType="VARCHAR"/> 
+<result column="market_name" property="marketName" jdbcType="VARCHAR"/> 
+<result column="begin_Date" property="beginDate" jdbcType="DATE"/> 
+<result column="end_Date" property="endDate" jdbcType="DATE"/> 
+<result column="event_Type_Id" property="eventTypeId" jdbcType="VARCHAR"/> 
+<result column="address" property="address" jdbcType="VARCHAR"/> 
+<result column="expected_Cost" property="expectedCost" jdbcType="FLOAT"/> 
+<result column="actual_Cost" property="actualCost" jdbcType="FLOAT"/> 
+<result column="actual_Income" property="actualIncome" jdbcType="FLOAT"/> 
+<result column="marketing_Plan" property="marketingPlan" jdbcType="FLOAT"/> 
+<result column="execution_Description" property="executionDescription" jdbcType="VARCHAR"/> 
+<result column="summary" property="summary" jdbcType="VARCHAR"/> 
+<result column="effect" property="effect" jdbcType="VARCHAR"/> 
+<result column="description" property="description" jdbcType="VARCHAR"/> 
+<result column="participant_Ids" property="participantIds" jdbcType="VARCHAR"/> 
+</resultMap>  
+<select id="getList" parameterType="map" resultMap="CrmMarketResultMap">   
+  SELECT t.* FROM crm_market t   
+ </select>  
+ <insert id="save" parameterType="cn.easymis.entitys.mybatis.dto.CrmMarketDto">  
+ INSERT INTO crm_market(market_id,creator_id,org_id,market_name,begin_Date,end_Date,event_Type_Id,address,expected_Cost,actual_Cost,actual_Income,marketing_Plan,execution_Description,summary,effect,description,participant_Ids)values(#{marketId},#{creatorId},#{orgId},#{marketName},#{beginDate},#{endDate},#{eventTypeId},#{address},#{expectedCost},#{actualCost},#{actualIncome},#{marketingPlan},#{executionDescription},#{summary},#{effect},#{description},#{participantIds}) 
+ </insert>  
+ <update id="update" parameterType="cn.easymis.entitys.mybatis.dto.CrmMarketDto">  
+  UPDATE crm_market SET market_id= #{marketId},creator_id= #{creatorId},org_id= #{orgId},market_name= #{marketName},begin_Date= #{beginDate},end_Date= #{endDate},event_Type_Id= #{eventTypeId},address= #{address},expected_Cost= #{expectedCost},actual_Cost= #{actualCost},actual_Income= #{actualIncome},marketing_Plan= #{marketingPlan},execution_Description= #{executionDescription},summary= #{summary},effect= #{effect},description= #{description},participant_Ids= #{participantIds} WHERE market_id= #{marketId} 
+ </update> 
+ <delete id="delete" parameterType="java.lang.String"> 
+  DELETE FROM crm_market WHERE market_id = #{marketId} 
+ </delete>  
+ <select id="findById" parameterType="java.lang.String" resultMap="CrmMarketResultMap">  
+  SELECT t.* FROM crm_market t WHERE t.market_id = #{marketId} 
+ </select>  
+ </mapper>  
+ 
